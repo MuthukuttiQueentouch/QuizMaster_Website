@@ -29,6 +29,7 @@
         </a>
         <nav class="main-nav">
           <ul>
+                      <li><a href="second.html">Home</a></li>
             <li><a href="#how-it-works">About</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -378,8 +379,28 @@
       <h2>Try Now on Android & iOS</h2>
       <p>Get TableTap now on Google Play for Android and App Store for iOS. Enjoy smarter dining and restaurant management anytime, anywhere.</p>
       <div class="app-buttons">
-        <a href="#"><img src="assets/googleplay.svg" alt="Get it on Google Play"></a>
-        <a href="#"><img src="assets/appstore.svg" alt="Download on the App Store"></a>
+      <a href="https://play.google.com/store/apps/details?id=in.bizzui.qzmaster&pcampaignid=web_share" target="_blank">
+  <img src="assets/googleplay.svg" alt="Get it on Google Play">
+</a>
+
+<!-- App Store Button -->
+<a href="#" id="appstore-btn">
+  <img src="assets/appstore.svg" alt="Download on the App Store">
+</a>
+
+<!-- Popup Modal -->
+<div id="ios-popup" class="popup-overlay">
+  <div class="popup-content">
+    <img src="assets/ios-error-illustration.svg" alt="iOS Error" class="popup-illustration">
+    <h2>Oops!</h2>
+    <p>Currently iOS version is not available.</p>
+    <div class="popup-buttons">
+      <button id="go-back">Go Back</button>
+      <button id="try-android">Try on Android</button>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
     <div class="cta-image">
@@ -483,10 +504,9 @@
 <script src="doggle.js"></script>
 <script src="hero.js"></script>
 <script src="hamburger.js"></script>
-<script src="swiper.js">
-  
+<script src="swiper.js">  
 </script>
-
+<script src="popup.js"></script>
 </body>
 
 </html>
