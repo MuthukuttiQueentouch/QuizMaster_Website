@@ -578,34 +578,37 @@ section {
   transform: translateY(0);
 }
 
-
-/* CSS from section:features */
+/* ================= Feature Section ================= */
 .feature-section {
   background-color: var(--white);
 }
+
+/* ================= Feature Grid ================= */
 .feature-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
 }
-.feature-grid.reversed {
-  grid-template-columns: 1fr 1fr;
-}
+
 .feature-grid.reversed .feature-text {
   order: -1;
 }
+
+/* ================= Feature Text ================= */
 .feature-text {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
 }
+
 .feature-text h2 {
   font-size: 48px;
   line-height: 1.5;
   color: #1e194d;
 }
+
 .feature-text p {
   font-family: 'DM Sans', sans-serif;
   font-size: 24px;
@@ -613,6 +616,7 @@ section {
   color: var(--text-muted);
   margin-bottom: 16px;
 }
+
 .btn-view-more {
   background-color: var(--primary-color);
   color: var(--text-light);
@@ -622,40 +626,77 @@ section {
   font-size: 14px;
   font-weight: 500;
 }
-.feature-image-wrapper {
-  position: relative;
-  width: 522px;
-  height: 522px;
-  justify-self: center;
-}
-.feature-bg-shape {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.feature-phone-mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  clip-path: url(#phone-clip); /* This would need an inline SVG for the mask */
-  overflow: hidden;
-}
-.feature-phone-mask .phone-bg, .feature-phone-mask .phone-screen {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 648px;
-}
-.feature-deco-1 { position: absolute; top: -47px; left: 38px; }
-.feature-deco-2 { position: absolute; top: 62px; right: -20px; transform: rotate(90deg); }
-.feature-deco-3 { position: absolute; bottom: -47px; right: 38px; }
 
+/* ================= Feature Image Wrapper ================= */
+.feature-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-image-wrapper {
+  width: 520px;
+  height: 520px;
+  background-color: var(--wrapper-color, #FFD700);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* bottom-align phone */
+  overflow: hidden; /* phone cut effect */
+  border-top-left-radius: var(--radius-top-left,0%);
+  border-top-right-radius: var(--radius-top-right,50%);
+  border-bottom-right-radius: var(--radius-bottom-right,50%);
+  border-bottom-left-radius: var(--radius-bottom-left,50%);
+  box-shadow: 10px 10px 30px rgba(0,0,0,0.2),
+              -5px -5px 15px rgba(255,255,255,0.3);
+  position: relative;
+}
+
+/* Phone */
+.feature-phone-mask {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.feature-phone-mask img.phone-screen {
+  margin-left: 100px;
+  margin-top: 120px;
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  z-index: 2;
+}
+
+/* Decoration - container level (cut aagathu) */
+.feature-deco-top-right {
+  position: absolute;
+  top: 0;
+  right: 120px;
+  width: 100px;
+  height: 100px;
+  z-index: 5;
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+
+/* Keyframes for float animation */
+@keyframes floatUpDown {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+
+/* ================= Responsive ================= */
 @media (max-width: 992px) {
   .feature-grid, .feature-grid.reversed {
     grid-template-columns: 1fr;
@@ -667,28 +708,47 @@ section {
   }
   .feature-text h2 { font-size: 36px; }
   .feature-text p { font-size: 18px; }
-  .feature-image-wrapper {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
+
+.feature-image-wrapper {
+  height:10%; ;
+    width: 110%;       /* 80% → 70%, container slightly smaller */
+    max-width: 370px; /* 400px → 320px */
     aspect-ratio: 1/1;
-    margin-bottom: 40px;
+  }
+  .feature-phone-mask {
+   
+    width: 60%;       /* 70% → 60%, phone smaller inside wrapper */
+  }
+  .feature-phone-mask img.phone-screen {
+    margin-left: 75px;
+    margin-top: 80px;
+  width: 65%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+  z-index: 2;
+}
+  .feature-deco-top-right {
+    width: 50px;      /* 40px → 30px */
+    height: 50px;
+    top: 0px;
+    right: 70px;
   }
 }
-/* Animation base state */
+
+/* ================= Animations ================= */
 .animate-hidden {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease-out;
 }
 
-/* Visible state */
 .animate-show {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Circle / Image animation */
 .scale-hidden {
   opacity: 0;
   transform: scale(0.8) rotate(-10deg);
@@ -699,6 +759,7 @@ section {
   opacity: 1;
   transform: scale(1) rotate(0);
 }
+
 
 /* CSS from section:exam-overview */
 .exam-overview-section {
@@ -718,7 +779,6 @@ section {
   color: var(--text-muted);
 }
 .overview-content {
-  
   position: relative;
   margin-top: 80px;
   height: 600px;
@@ -726,29 +786,30 @@ section {
   justify-content: center;
   align-items: center;
 }
-.overview-bg-circle {
+
+/* Circle behind phone */
+.overview-circle-behind-phone {
   position: absolute;
-  width: 371px;
-  height: 371px;
+  width: 420px;           /* circle size */
+  height: 420px;
+  border-radius: 50%;
+  background-color: var(--primary-color); /* circle color */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 1;             /* behind phone */
 }
-.overview-phone {
 
-    margin-right:40px ;
+/* Phone container above circle */
+.overview-phone {
   position: relative;
-  z-index: 5;
+  z-index: 2;             /* above circle */
   width: 398px;
   height: 562px;
 }
-.overview-phone .phone-bg, .overview-phone .phone-screen {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+
+
+
 .overview-feature {
   margin-right:-90px ;
     margin-left:-120px ;
@@ -802,8 +863,48 @@ section {
     max-width: 300px;
   }
   .feature-badge { margin-left: auto; margin-right: auto; }
-  .overview-bg-circle { display: none; }
+  /* .overview-bg-circle { display: none; }
   .overview-phone { margin-bottom: 40px; }
+   */
+/* Circle behind phone */
+.overview-circle-behind-phone {
+  position: absolute;
+  width: 320px;           /* circle size */
+  height: 320px;
+  border-radius: 50%;
+  background-color: var(--primary-color); /* circle color */
+  top:  20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;             /* behind phone */
+    animation: pulseCircle 3s infinite ease-in-out;
+}
+
+/* Keyframes for pulse */
+@keyframes pulseCircle {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+}
+/* Phone container above circle */
+.overview-phone {
+  position: relative;
+  z-index: 2;             /* above circle */
+  width: 398px;
+  height: 462px;
+}
+
+
+
 }
 /* exam overview animation */
 /* Base hidden states */
@@ -1481,7 +1582,7 @@ color: #ffffff;
   color: #000000;
   text-transform: capitalize;
 }
-.about-col .logo { margin-bottom: 30px; }
+.about-col .logo { margin-bottom: 30px;margin-top: 5px; }
 .contact-info {
   display: flex;
   flex-direction: column;
@@ -1518,7 +1619,7 @@ color: #ffffff;
   border-radius: 50px;
   padding: 12px 28px;
   cursor: pointer;
-  font-family: 'Manrope', sans-serif;
+ 
   font-weight: 800;
   font-size: 14px;
 }
@@ -1528,7 +1629,7 @@ color: #ffffff;
   text-align: center;
 }
 .footer-bottom p {
-  font-family: 'Manrope', sans-serif;
+ 
   font-size: 16px;
   color: #000000;
 }
@@ -1757,6 +1858,11 @@ color: #ffffff;
   justify-content: center;
   align-items: center;
   z-index: 1000;
+}
+
+/* when active */
+.popup-overlay.active {
+  display: flex; /* flex enable pannum */
 }
 
 /* Popup content */
