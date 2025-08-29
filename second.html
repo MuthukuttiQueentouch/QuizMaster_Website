@@ -125,6 +125,7 @@
 </section>
 
 <!-- CTA Section -->
+
 <section id="cta-download" class="cta-section">
   <div class="container cta-container">
     <div class="cta-background">
@@ -136,8 +137,28 @@
       <h2>Try Now on Android & iOS</h2>
       <p>Get TableTap now on Google Play for Android and App Store for iOS. Enjoy smarter dining and restaurant management anytime, anywhere.</p>
       <div class="app-buttons">
-        <a href="#"><img src="assets/googleplay.svg" alt="Get it on Google Play"></a>
-        <a href="#"><img src="assets/appstore.svg" alt="Download on the App Store"></a>
+      <a href="https://play.google.com/store/apps/details?id=in.bizzui.qzmaster&pcampaignid=web_share" target="_blank">
+  <img src="assets/googleplay.svg" alt="Get it on Google Play">
+</a>
+
+<!-- App Store Button -->
+<a href="#" id="appstore-btn">
+  <img src="assets/appstore.svg" alt="Download on the App Store">
+</a>
+
+<!-- Popup Modal -->
+<div id="ios-popup" class="popup-overlay">
+  <div class="popup-content">
+    <img src="assets/ios-error-illustration.svg" alt="iOS Error" class="popup-illustration">
+    <h2>Oops!</h2>
+    <p>Currently iOS version is not available.</p>
+    <div class="popup-buttons">
+      <button id="go-back">Go Back</button>
+      <button id="try-android">Try on Android</button>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
     <div class="cta-image">
@@ -170,6 +191,18 @@
         <textarea placeholder="Message*" rows="4"></textarea> 
         <button type="submit" class="btn-send">Send</button>
       </form>
+     <div class="map-container" style="width:100%; height:400px;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.206123292896!2d79.1333!3d10.7905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5518c50f0a0d1f%3A0xf7fbeed671b5fbe2!2sThoothukudi!5e0!3m2!1sen!2sin!4v1692951000000!5m2!1sen!2sin" 
+    width="100%" 
+    height="100%" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
     </div>
   </div>
 </section>
@@ -184,16 +217,41 @@
           <span class="logo-text">QuizMaster</span>
         </a>
         <ul class="contact-info">
-          <li><img src="assets/mail.svg" alt="email icon"> Queentouchtech.com</li>
-          <li><img src="assets/call.svg" alt="phone icon"> +1 234 456 678 89</li>
+          <li><img src="assets/mail-outline.svg" alt="email icon"> Queentouchtech.com</li>
+          <li><img src="assets/call-outline.svg" alt="phone icon"> +1 234 456 678 89</li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>links</h4>
         <ul>
-          <li><a href="index.html">home</a></li>
-          <li><a href="#section-hero">about us</a></li>
+          <li><a href="#">home</a></li>
+          <li><a href="#">about us</a></li>
+          <li><a href="#">bookings</a></li>
         </ul>
+      </div>
+      <div class="footer-col">
+        <h4>legal</h4>
+        <ul>
+          <li><a href="#">terms of use</a></li>
+          <li><a href="#">privacy policy</a></li>
+          <li><a href="#">cookie policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>product</h4>
+        <ul>
+          <li><a href="#">take tour</a></li>
+          <li><a href="#">live chat</a></li>
+          <li><a href="#">reveiws</a></li>
+        </ul>
+      </div>
+      <div class="footer-col newsletter-col">
+        <h4>Newsletter</h4>
+        <p>Stay up to date</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email">
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
     </div>
     <div class="footer-bottom">
@@ -203,5 +261,9 @@
 </footer>
 <script src="hero.js"></script>
 <script src="hamburger.js"></script>
+<script src="animations/contact.js"></script>
+<script src="animations/cta.js"></script>
+<script src="animations/footer.js"></script>
+<script src="animations/hero.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: var(--text-secondary);
   background-color: var(--white);
   line-height: 1.6;
@@ -284,7 +284,7 @@ section {
 /* CSS from section:hero */
 .hero-section {
   background: linear-gradient(180deg, #e8f1ff 0%, #ffffff 100%);
-  padding-top: 90px;
+  padding-top: 60px;
   padding-bottom: 0px;
   position: relative;
 }
@@ -305,7 +305,7 @@ section {
   z-index: 0;
 }
 .deco-shape-1 { position: absolute; top: -5%; right: 5%; opacity: 0.5; transform: rotate(95.45deg); }
-.deco-shape-2 { position: absolute; top: -13%; left: 5%; opacity: 0.7; }
+.deco-shape-2 { position: absolute; top: -5%; left: 5%; opacity: 0.7; }
 .deco-shape-3 { position: absolute; bottom: 0%; right: 10%; opacity: 0.7; transform: rotate(-128deg); }
 
 .hero-content {
@@ -324,7 +324,7 @@ section {
 }
 .title-underline {
   position: absolute;
-  bottom: 375px;
+  bottom: 399px;
   left: 50%;
   transform: translateX(-50%);
   width: 176px;
@@ -361,7 +361,7 @@ section {
   transition: background-color 0.3s;
 }
 .btn-explore:hover {
-  background-color: #2554c7;
+  background-color: var(--primary-color);
 }
 .hero-phones {
   width: 100%;
@@ -447,28 +447,33 @@ section {
   opacity: 1;
   transform: translateX(0) rotate(0deg);
 }
-
 /* CSS from section:how-it-works */
 .how-it-works-section {
   background-color: var(--white);
 }
+
+/* Section header */
 .section-header {
   text-align: center;
   max-width: 692px;
   margin: 0 auto 60px;
 }
+
 .section-header h2 {
   font-size: 48px;
   line-height: 1.5;
   color: #1e194d;
   margin-bottom: 20px;
 }
+
 .section-header p {
   font-family: 'DM Sans', sans-serif;
   font-size: 24px;
   line-height: 1.6;
   color: var(--text-muted);
 }
+
+/* Steps container */
 .steps-container {
   display: flex;
   justify-content: space-between;
@@ -476,6 +481,7 @@ section {
   position: relative;
   gap: 20px;
 }
+
 .step {
   flex: 1;
   text-align: center;
@@ -485,6 +491,7 @@ section {
   gap: 16px;
   max-width: 360px;
 }
+
 .step-number-wrapper {
   width: 48px;
   height: 48px;
@@ -498,29 +505,37 @@ section {
   position: relative;
   z-index: 2;
 }
-.step:nth-child(3) .step-number-wrapper, .step:nth-child(5) .step-number-wrapper {
+
+.step:nth-child(3) .step-number-wrapper,
+.step:nth-child(5) .step-number-wrapper {
   background-color: #dae5ff;
 }
+
 .step-number {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 20px;
   color: var(--text-light);
 }
-.step:nth-child(3) .step-number, .step:nth-child(5) .step-number {
+
+.step:nth-child(3) .step-number,
+.step:nth-child(5) .step-number {
   color: #1e194d;
 }
+
 .step h3 {
   font-size: 20px;
   font-weight: 600;
   color: #1e194d;
 }
+
 .step p {
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   color: var(--text-muted);
   line-height: 1.3;
 }
+
 .step-connector {
   flex-grow: 1;
   height: 2px;
@@ -528,6 +543,8 @@ section {
   margin-top: 24px;
   max-width: 386px;
 }
+
+/* Responsive */
 @media (max-width: 992px) {
   .steps-container {
     flex-direction: column;
@@ -537,9 +554,30 @@ section {
   .step-connector {
     display: none;
   }
-  .section-header h2 { font-size: 40px; }
-  .section-header p { font-size: 20px; }
+  .section-header h2 {
+    font-size: 40px;
+  }
+  .section-header p {
+    font-size: 20px;
+  }
 }
+
+/* --- Animation states controlled by JS --- */
+
+/* Hidden (initial) */
+.hiw-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Visible (when in view) */
+.hiw-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /* CSS from section:features */
 .feature-section {
@@ -636,6 +674,30 @@ section {
     aspect-ratio: 1/1;
     margin-bottom: 40px;
   }
+}
+/* Animation base state */
+.animate-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+}
+
+/* Visible state */
+.animate-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Circle / Image animation */
+.scale-hidden {
+  opacity: 0;
+  transform: scale(0.8) rotate(-10deg);
+  transition: all 1s ease-out;
+}
+
+.scale-show {
+  opacity: 1;
+  transform: scale(1) rotate(0);
 }
 
 /* CSS from section:exam-overview */
@@ -743,21 +805,47 @@ section {
   .overview-bg-circle { display: none; }
   .overview-phone { margin-bottom: 40px; }
 }
+/* exam overview animation */
+/* Base hidden states */
+.ovw-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+.ovw-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Phone zoom animation */
+.ovw-phone-hidden {
+  opacity: 0;
+  transform: scale(0.8) rotate(-8deg);
+  transition: all 1s ease-out;
+  will-change: transform, opacity;
+}
+
+.ovw-phone-show {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
 
 /* CSS from section:app-screenshots */
 .screenshots-section {
   background-color: #ebf1ff;
 }
 .screenshots-section .section-header h2 {
-  font-family: 'Cabinet Grotesk', sans-serif;
+  
   font-weight: 800;
   font-size: 68px;
   text-transform: capitalize;
 }
 .screenshots-section .section-header p {
-  font-family: 'Manrope', sans-serif;
+ 
   font-size: 18px;
-  color: #272727;
+  color: #444444;
 }
 .screenshots-slider {
   
@@ -932,6 +1020,22 @@ section {
   color: var(--primary-color);
   border-color: var(--white);
 }
+/* pricing animation */
+/* Hidden state */
+.pricing-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  filter: blur(6px);
+  transition: all 0.9s ease-out;
+  will-change: opacity, transform, filter;
+}
+
+/* Visible state */
+.pricing-show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
 
 /* CSS from section:testimonials */
 .testimonials-section .section-header h2 {
@@ -1058,6 +1162,22 @@ color: #ffffff;
     opacity: 1;
   }
 }
+/* testimonial animation */
+/* Hidden state */
+.testimonial-hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  filter: blur(6px);
+  transition: all 0.9s ease-out;
+  will-change: opacity, transform, filter;
+}
+
+/* Visible state */
+.testimonial-show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
 
 /* CSS from section:cta-download */
 .cta-section {
@@ -1160,6 +1280,33 @@ color: #ffffff;
     align-items: center;
   }
 }
+/* CTA animation - image smooth entry */
+/* CTA animation */
+
+/* Common hidden state (for text/buttons) */
+.cta-hidden {
+  opacity: 0;
+  transform: translateY(40px); /* bottom la irundhu */
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Visible state */
+.cta-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Special case for image → right la irundhu */
+.cta-image.cta-hidden {
+  transform: translateX(100px); /* right la irundhu */
+}
+
+.cta-image.cta-show {
+  opacity: 1;
+  transform: translateX(0); /* settle position */
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
 
 
 /* CSS from section:contact */
@@ -1209,8 +1356,9 @@ color: #ffffff;
   color: var(--white);
 }
 .contact-section .section-header p {
-  font-family: 'Manrope', sans-serif;
+ 
   font-size: 20px;
+  color: #c2d3fd;
   margin-top: 20px;
 }
 .contact-content-wrapper {
@@ -1248,7 +1396,8 @@ color: #ffffff;
   resize: vertical;
 }
 .btn-send {
-  background-color: #dbdbdb;
+  margin-top: 0;
+  background-color: #ffffff;
   color: #565656;
   border: none;
   padding: 18px;
@@ -1275,6 +1424,33 @@ color: #ffffff;
 @media (max-width: 768px) {
   .form-row { flex-direction: column; }
 }
+/* Contact animation hidden state */
+.contact-hidden {
+  opacity: 0;
+  transform: translateY(40px); /* bottom la irundhu */
+  transition: all 0.9s ease-out;
+  will-change: transform, opacity;
+}
+
+/* Visible state */
+.contact-show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Special case for map – right la irundhu */
+.map-container.contact-hidden {
+  opacity: 0;
+  transform: translateY(40px); /* bottom la irundhu */
+  transition: all 0.9s ease-out;
+}
+
+.map-container.contact-show {
+  opacity: 1;
+  transform: translateX(0); /* normal pos */
+  filter: blur(0); /* clear view */
+}
+
 
 /* CSS from section:footer */
 .site-footer {
@@ -1289,7 +1465,7 @@ color: #ffffff;
   padding-bottom: 40px;
 }
 .footer-col h4 {
-  font-family: 'Inter', sans-serif;
+  
   font-weight: 700;
   font-size: 28px;
   color: #000000;
@@ -1300,16 +1476,16 @@ color: #ffffff;
   margin-bottom: 16px;
 }
 .footer-col a, .footer-col p, .footer-col li {
-  font-family: 'Manrope', sans-serif;
+  
   font-size: 16px;
   color: #000000;
   text-transform: capitalize;
 }
-.about-col .logo { margin-bottom: 20px; }
+.about-col .logo { margin-bottom: 30px; }
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
 }
 .contact-info li {
   display: flex;
@@ -1361,6 +1537,22 @@ color: #ffffff;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
+/* footer animation */
+/* hidden state */
+.footer-hidden {
+  opacity: 0;
+  transform: translateY(40px); /* bottom la irunthu varum */
+  filter: blur(6px);
+  transition: all 0.9s ease-out;
+  will-change: opacity, transform, filter;
+}
+
+/* visible state */
+.footer-show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
 
 /* screen 2 intro home */
 .intro-section {
@@ -1392,7 +1584,7 @@ color: #ffffff;
 }
 
 .intro-description {
-  font-family: 'Inter', sans-serif;
+ 
   font-size: 1rem;
   line-height: 1.6;
   color: #606060;
